@@ -1,0 +1,31 @@
+name: CI automation for the website
+on:
+    push:
+        branches: ["develop"]
+    pull_request:
+        branches: ["develop"]
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+
+        defaults:
+            run:
+                working-directory: ./
+
+        strategy:
+            matrix:
+                os: [windows-latest, ubuntu-latest, macOS-latest]
+                node-version: ["18.17.0"]
+
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "npm"
+                  cache-dependency-path: "./package-lock.json"
+			# add your steps like test after the build
+            - run: npm i
+            - run: npm run build

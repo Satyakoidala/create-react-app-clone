@@ -1,0 +1,13 @@
+# node modules
+node_modules/
+
+# build and dist folder
+dist/
+build/
+
+.vscode
+.husky
+
+.eslintcache
+
+.env
