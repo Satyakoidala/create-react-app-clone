@@ -3,6 +3,7 @@ const installGlobal = require("./installGlobal");
 const {
 	createFolderAndCopyTemplate,
 	packageJsonOverride,
+	cleanUp,
 } = require("./fileOperations");
 
 let folder;
@@ -40,6 +41,11 @@ async function main() {
 
 	// override template package.json with input details
 	await packageJsonOverride(details);
+
+	// cleanup the project folder
+	await cleanUp(folder).then(() => {
+		console.log(`Cleaned the project folder successfully!\n`);
+	});
 }
 
 main().then(() => {

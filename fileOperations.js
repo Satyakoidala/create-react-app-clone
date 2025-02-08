@@ -35,7 +35,7 @@ async function packageJsonOverride(details) {
 	const pkgJson = require(path.resolve(pwd, folder || "", "package.json"));
 
 	const overrides = ["name", "description", "author", "git"];
-	let newPkgJson = { ...pkgJson };
+	let newPkgJson = { ...pkgJson, version: "0.0.0", keywords: [] };
 
 	overrides.forEach((key) => {
 		if (details[key]) {
@@ -47,6 +47,10 @@ async function packageJsonOverride(details) {
 								type: "git",
 								url: `git+${details[key]}`,
 							},
+							homepage: `${details[key]}#readme`,
+							bugs: {
+								url: `${details[key]}/issues`,
+							},
 					  }
 					: {
 							[key]: `${details[key]}`,
@@ -54,6 +58,10 @@ async function packageJsonOverride(details) {
 			};
 		}
 	});
+
+	const keysToDelete = ["license", "preferGlobal", "publishConfig"];
+
+	keysToDelete.forEach((key) => delete newPkgJson[key]);
 
 	// update package.json with input data
 	fs.writeFile(
@@ -69,7 +77,21 @@ async function packageJsonOverride(details) {
 	);
 }
 
+async function cleanUp(folder) {
+	console.log("Cleaning the project folder..\n");
+
+	const folderPath = `./${folder}/node_modules`;
+
+	fs.rm(folderPath, { recursive: true, force: true }, (err) => {
+		if (err) {
+			console.error(`Error deleting folder: ${err.message}`);
+			return;
+		}
+	});
+}
+
 module.exports = {
 	createFolderAndCopyTemplate,
 	packageJsonOverride,
+	cleanUp,
 };

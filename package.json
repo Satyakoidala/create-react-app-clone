@@ -1,6 +1,6 @@
 {
 	"name": "@satyakodes/cra-with-webpack",
-	"version": "0.0.1-2",
+	"version": "0.0.1-4",
 	"description": "Custom react template without CRA",
 	"preferGlobal": true,
 	"directories": {
