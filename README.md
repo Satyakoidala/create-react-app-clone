@@ -16,7 +16,7 @@
 Install the package globally using NPM.
 
 ```
-npm i -g @satyakodes/create-react-app
+npm i -g @satyakodes/custom-create-react-app
 ```
 
 ## Usage <a name="usage"></a>
