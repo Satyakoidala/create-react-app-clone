@@ -5,6 +5,7 @@ const {
 	packageJsonOverride,
 	cleanUp,
 } = require("./fileOperations");
+const { TEMPLATE } = require("./constant");
 
 let folder;
 
@@ -30,12 +31,12 @@ async function main() {
 	};
 
 	// install template package globally
-	await installGlobal("@satyakodes/create-react-app");
+	await installGlobal(TEMPLATE);
 
 	// create new folder and copy template
 	await createFolderAndCopyTemplate(details).then(() => {
 		console.log(
-			`React template from @satyakodes/create-react-app is copied successfully!\n`
+			`React template from ${TEMPLATE} is copied successfully!\n`
 		);
 	});
 

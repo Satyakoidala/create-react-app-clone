@@ -1,8 +1,11 @@
 {
-	"name": "@satyakodes/cra-with-webpack",
-	"version": "0.0.1-4",
+	"name": "@satyakodes/custom-create-react-app",
+	"version": "0.0.1-5",
 	"description": "Custom react template without CRA",
 	"preferGlobal": true,
+	"publishConfig": {
+		"access": "public"
+	},
 	"directories": {
 		"bin": "./bin"
 	},
