@@ -16,7 +16,9 @@ async function createFolderAndCopyTemplate({ folder }) {
 	}
 
 	fs.cpSync(
-		path.resolve(process.execPath, "../node_modules", TEMPLATE),
+		process.platform === "win32"
+			? path.resolve(process.execPath, "../node_modules", TEMPLATE)
+			: path.resolve("/usr/local/lib/node_modules", TEMPLATE),
 		path.join(PWD, folder),
 		{ recursive: true },
 		(err) => {
