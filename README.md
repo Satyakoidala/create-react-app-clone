@@ -3,7 +3,7 @@
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">@satyakodes/custom-create-react-app</h3>
+<h3 align="center">sk-create-react-app</h3>
 
 ---
 
@@ -16,7 +16,7 @@
 Install the package globally using NPM.
 
 ```
-npm i -g @satyakodes/custom-create-react-app
+npm i -g sk-create-react-app
 ```
 
 ## Usage <a name="usage"></a>
