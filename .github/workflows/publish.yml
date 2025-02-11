@@ -1,0 +1,32 @@
+name: Publish Package
+
+on:
+    push:
+        branches:
+            - master # Or your main branch name (e.g., master)
+
+jobs:
+    build-and-publish:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write # Important: Grant write access to packages
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18.18.0 # Or your preferred Node.js version
+                  registry-url: "https://registry.npmjs.org" # For npm
+                  # Optionally set scope if publishing to a scoped registry
+                  # scope: '@your-scope'
+
+            - run: npm ci # Use npm ci for faster and more reliable installs (locks dependencies)
+            #- run: npm test # Run your tests (optional but highly recommended)
+            #- run: npm build # Or your build command if you have one (e.g., npm run build)
+
+            - name: Publish to npm
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # Securely store your npm token
