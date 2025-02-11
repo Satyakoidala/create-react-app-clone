@@ -1,6 +1,6 @@
 {
 	"name": "sk-create-react-app",
-	"version": "0.0.1-7",
+	"version": "0.0.1-8",
 	"description": "Custom react template without CRA",
 	"preferGlobal": true,
 	"publishConfig": {
@@ -12,6 +12,9 @@
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Satyakoidala/create-react-app-clone.git"
+	},
+	"scripts": {
+		"test": "node index.js"
 	},
 	"author": "Satya Koidala",
 	"license": "ISC",

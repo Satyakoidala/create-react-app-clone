@@ -1,3 +1,3 @@
 module.exports = {
-	TEMPLATE: "@satyakodes/create-react-app",
+	TEMPLATE: "satyakodes-cra-template",
 };
